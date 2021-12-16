@@ -1,0 +1,25 @@
+{
+    "Bulbasaur": {
+        "id": 1,
+        "type": ["Grass", "Poison"],
+        "health": 5,
+        "attack": 5,
+        "defense": 5,
+        "specialAttack": 7,
+        "specialDefense": 7,
+        "speed": 5,
+        "gender_ratio": 0.125,
+        "stage": 1,
+        "stages_left": 2,
+        "legendary": false,
+        "evolutions": [
+            "Ivysaur",
+            "Venusaur"
+        ],
+        "abilities": {
+            "basic": ["Confidence", "Photosynthesis"],
+            "advanced": ["Chlorophyll", "Leaf Guard"],
+            "high": "Courage"
+        }
+    }
+}
