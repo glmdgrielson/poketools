@@ -39,5 +39,3 @@ def generate_nature():
     higher = randrange(0, 6)
     lower = randrange(0, 6)
     return (higher, lower)
-
-random.Random().randrange(0, 6)
