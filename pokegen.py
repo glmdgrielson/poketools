@@ -39,3 +39,6 @@ def generate_nature():
     higher = randrange(0, 6)
     lower = randrange(0, 6)
     return (higher, lower)
+
+if __name__ == "__main__":
+    pass
