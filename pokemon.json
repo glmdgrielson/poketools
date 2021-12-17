@@ -114,7 +114,15 @@
                 "Leech Seed": 7,
                 "Vine Whip": 9,
                 "Poison Powder": 13,
-                "Sleep Power": 13
+                "Sleep Power": 13,
+                "Take Down": 15,
+                "Razor Leaf": 20,
+                "Sweet Scent": 23,
+                "Growth": 28,
+                "Double-Edge": 31,
+                "Worry Seed": 36,
+                "Synthesis": 39,
+                "Solar Beam": 44
             }
         }
     },

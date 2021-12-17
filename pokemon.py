@@ -47,6 +47,8 @@ class PocketMonster(object):
                         self.gender = "male"
                 self.movelist = self.generate_moves(base["moves"]["level"])
                 self.ability = random.choice(base["abilities"]["basic"])
+                if base["legendary"] is True:
+                    self.legendary = True
 
     def apply_damage(self, damage, typing, category):
         """Apply damage, for GMing purposes.
@@ -57,9 +59,13 @@ class PocketMonster(object):
         """Create a movelist for this Pokémon.
 
         Arguments:
-            moves: a map of moves to levels. This should be as it appears in the
-            rulebook *exactly* because this is going to be used later.
+            moves: a map of moves to levels. This should be as it
+            appears in the rulebook *exactly* because this is going
+            to be used later.
             egg: If egg moves are desired, pass in a list to be used.
+
+        Should return four randomly selected moves that can be
+        learned in the scenarios provided.
         """
         moves = []
         for (move, level) in moves.items():
@@ -71,4 +77,4 @@ class PocketMonster(object):
             moves += machine
         if tutor is not None:
             moves += tutor
-        return moves[0:4]
+        return random.sample(moves, k=4)
