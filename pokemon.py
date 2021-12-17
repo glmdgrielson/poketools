@@ -52,6 +52,21 @@ class PocketMonster(object):
                 self.ability = random.choice(base["abilities"]["basic"])
                 if base["legendary"] is True:
                     self.legendary = True
+                (higher, lower) = generate_nature()
+                self.nature = NATURES[higher][lower]
+                stats = [
+                    self.health, self.attack, self.defense,
+                    self.sp_attack, self.sp_defense, self.speed]
+                if higher == 0:
+                    self.health += 1
+                else:
+                    # TODO: Is there a less ugly way to do this?
+                    stats.index(higher).__add__(2)
+                if lower == 0:
+                    self.health -= 1
+                else:
+                    stats.index(lower).__sub__(2)
+                self.hit_points = level + 3 * self.health + 10
 
     def apply_damage(self, damage, typing, category):
         """Apply damage, for GMing purposes.
@@ -69,13 +84,16 @@ class PocketMonster(object):
         learned in the scenarios provided.
         """
         moves = []
+        learned_moves = []
         for (move, level) in self.movelist["level"].items():
             if level <= self.level:
                 moves += [move]
         if egg:
             moves += self.movelist["egg"]
         if machine:
-            moves += self.movelist["machine"]
+            learned_moves += self.movelist["machine"]
         if tutor:
-            moves += self.movelist["tutor"]
-        return random.sample(moves, k=4)
+            learned_moves += self.movelist["tutor"]
+        if learned_moves:
+            moves += random.sample(learned_moves, k=3)
+        return random.sample(moves, k=6)
