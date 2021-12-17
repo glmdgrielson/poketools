@@ -4,6 +4,11 @@
 from pokegen import NATURES, generate_nature
 import json
 
+class MonsterData(object):
+    """A simple thing to hold JSON data.
+    """
+    pass
+
 class PocketMonster(object):
     """A Pokémon.
     """
@@ -30,3 +35,7 @@ class PocketMonster(object):
         """
         pass
 
+    def generate_moves(self, egg=None, machine=None, tutor=None):
+        """Create a movelist for this Pokémon.
+        """
+        pass

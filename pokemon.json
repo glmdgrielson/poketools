@@ -28,6 +28,121 @@
                 "Leech Seed": 7,
                 "Vine Whip": 9,
                 "Poison Powder": 13,
+                "Sleep Power": 13,
+                "Take Down": 15,
+                "Razor Leaf": 19,
+                "Sweet Scent": 21,
+                "Growth": 25,
+                "Double-Edge": 27,
+                "Worry Seed": 31,
+                "Synthesis": 33,
+                "Seed Bomb": 37
+            },
+            "machine": [
+                "Cut",
+                "Strenght",
+                "Toxic",
+                "Venoshock",
+                "Hidden Power",
+                "Sunny Day",
+                "Light Screen",
+                "Protect",
+                "Safeguard",
+                "Frustration",
+                "Solar Beam",
+                "Facade",
+                "Rest",
+                "Attract",
+                "Round",
+                "Echoed Voice",
+                "Energy Ball",
+                "Flash",
+                "Swords Dance",
+                "Grass Knot",
+                "Swagger",
+                "Sleep Talk",
+                "Substitute",
+                "Rock Smash",
+                "Nature Power",
+                "Confide"
+            ],
+            "egg": [
+                "Amnesia",
+                "Charm",
+                "Curse",
+                "Endure",
+                "Giga Drain",
+                "Grass Whistle",
+                "Grassy Terrain",
+                "Ingrain",
+                "Leaf Storm",
+                "Light Screen",
+                "Magical Leaf",
+                "Nature Power",
+                "Petal Dance",
+                "Power Whip",
+                "Safeguard",
+                "Skull Bash",
+                "Sludge"
+            ]
+        }
+    },
+    "Ivysaur": {
+        "id": 2,
+        "type": ["Grass", "Poison"],
+        "health": 6,
+        "attack": 6,
+        "defense": 6,
+        "specialAttack": 8,
+        "specialDefense": 8,
+        "speed": 6,
+        "gender_ratio": 0.125,
+        "stage": 2,
+        "stages_left": 1,
+        "legendary": false,
+        "evolutions": [
+            "Venasaur"
+        ],
+        "abilities": {
+            "basic": ["Chlorophyll", "Overgrow"],
+            "advanced": ["Confidence", "Discipline"],
+            "high": "Empower"
+        },
+        "moves": {
+            "level": {
+                "Growl": 3,
+                "Leech Seed": 7,
+                "Vine Whip": 9,
+                "Poison Powder": 13,
+                "Sleep Power": 13
+            }
+        }
+    },
+    "Blastoise": {
+        "id": 1,
+        "type": ["Grass", "Poison"],
+        "health": 5,
+        "attack": 5,
+        "defense": 5,
+        "specialAttack": 7,
+        "specialDefense": 7,
+        "speed": 5,
+        "gender_ratio": 0.125,
+        "stage": 3,
+        "stages_left": 0,
+        "legendary": false,
+        "abilities": {
+            "basic": ["Confidence", "Photosynthesis"],
+            "advanced": ["Chlorophyll", "Leaf Guard"],
+            "high": "Courage"
+        },
+        "moves": {
+            "level": {
+                "Tail Whip": 1,
+                "Bubble": 3,
+                "Withdraw": 7,
+                "Water Gun": 9,
+                "Poison Powder": 13,
                 "Sleep Power": 13
             }
         }
