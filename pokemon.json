@@ -20,6 +20,16 @@
             "basic": ["Confidence", "Photosynthesis"],
             "advanced": ["Chlorophyll", "Leaf Guard"],
             "high": "Courage"
+        },
+        "moves": {
+            "level": {
+                "Tackle": 1,
+                "Growl": 3,
+                "Leech Seed": 7,
+                "Vine Whip": 9,
+                "Poison Powder": 13,
+                "Sleep Power": 13
+            }
         }
     }
 }
