@@ -30,7 +30,7 @@ class PocketMonster(object):
             level: the current level of this Pokémon.
         """
         self.level = level
-        with open('./pokemon.json', mode="rt") as f:
+        with open('data/pokemon.json', mode="rt") as f:
             with json.dump(f) as data:
                 base = data[species]
                 self.health = base["health"]
@@ -45,7 +45,10 @@ class PocketMonster(object):
                         self.gender = "female"
                     else:
                         self.gender = "male"
-                self.movelist = self.generate_moves(base["moves"]["level"])
+                # This contains: a dict of moves to level learned, as
+                # well as lists of egg moves, TMs and HMs, and tutor moves
+                self.movelist = base["moves"]
+                self.moves = self.generate_moves(base["moves"]["level"])
                 self.ability = random.choice(base["abilities"]["basic"])
                 if base["legendary"] is True:
                     self.legendary = True
@@ -55,26 +58,24 @@ class PocketMonster(object):
         """
         pass
 
-    def generate_moves(self, moves, egg=None, machine=None, tutor=None):
+    def generate_moves(self, egg=False, machine=False, tutor=False):
         """Create a movelist for this Pokémon.
 
-        Arguments:
-            moves: a map of moves to levels. This should be as it
-            appears in the rulebook *exactly* because this is going
-            to be used later.
-            egg: If egg moves are desired, pass in a list to be used.
+        ``egg``, ``machine``, and ``tutor`` should be set to true
+        to include egg moves, TMs and HMs, and tutor moves,
+        respectively.
 
         Should return four randomly selected moves that can be
         learned in the scenarios provided.
         """
         moves = []
-        for (move, level) in moves.items():
+        for (move, level) in self.movelist["level"].items():
             if level <= self.level:
                 moves += [move]
-        if egg is not None:
-            moves += egg
-        if machine is not None:
-            moves += machine
-        if tutor is not None:
-            moves += tutor
+        if egg:
+            moves += self.movelist["egg"]
+        if machine:
+            moves += self.movelist["machine"]
+        if tutor:
+            moves += self.movelist["tutor"]
         return random.sample(moves, k=4)
