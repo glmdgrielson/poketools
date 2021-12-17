@@ -10,3 +10,13 @@ made in _Excel_, which rendered them basically useless for the poor Linux user.
 
 Thus, this project: a port of ElementalKnight's PTU Pokémon Generator in the
 slightly more portable format of Python scripts.
+
+Things It Do
+------------
+* Work on my machine.
+
+Things It Don't (Yet) Do
+------------------------
+* Generate encounters
+* Generate Trainer battles
+* Store accurate Pokémon data
