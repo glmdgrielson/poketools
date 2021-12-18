@@ -11,7 +11,7 @@ made in _Excel_, which rendered them basically useless for the poor Linux user.
 Thus, this project: a port of ElementalKnight's PTU Pokémon Generator in the
 slightly more portable format of Python scripts.
 
-Data for this project is partially stolen from [https://github.com/fedorablewill/ptu-toolkit](ptu-toolkit) and rewritten for my own preferences.
+Data for this project is partially stolen from [ptu-toolkit](https://github.com/fedorablewill/ptu-toolkit) and rewritten for my own preferences.
 
 Things It Do
 ------------
