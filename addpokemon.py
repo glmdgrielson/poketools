@@ -5,17 +5,33 @@ import json
 
 def main():
     """I hope this script works.
+
+    Note that this script does have one issue: branched evolutions.
+    I simply figured that trying to work out the logic for these special
+    cases wasn't worth it right now. So if this script is run, there
+    will still be some manual input required, but nowhere near as much
+    as without this script.
+
+    It also leaves the Dex number for alternate forms blank, so that
+    the program doesn't bork when it gets to a dex number that can't
+    be turned into a string.
     """
     dex = {}
     with open("data/dex.json", "rt") as fp:
         data = json.load(fp)
         for (dex_number, value) in data.items():
+            species = value["Species"]
+            species_name = species # type: str
+            dex_id = None
             try:
                 int(dex_number)
             except ValueError:
-                break
+                species_name = '{0} ({1})'.format(
+                        species, value["Form"])
+            else:
+                dex_id = int(dex_number)
             entry = {
-                "id": int(dex_number),
+                "id": dex_id,
                 "type": value["Types"],
                 "health": value["BaseStats"]["HP"],
                 "attack": value["BaseStats"]["Attack"],
@@ -26,7 +42,6 @@ def main():
             }
             if value["BreedingData"]["HasGender"]:
                 entry["gender_ratio"] = value["BreedingData"]["FemaleChance"]
-                pass
             abilities = {
                 'basic': [],
                 'advanced': [],
@@ -60,15 +75,32 @@ def main():
                 level = move["LevelLearned"]
                 moves['level'][name] = level
             for move in value["TmHmMoves"]:
-                moves['machine'] += move['Name']
+                moves['machine'].append(move['Name'])
             for move in value['TutorMoves']:
                 moves['tutor'][move['Name']] = move["Natural"]
             for move in value["EggMoves"]:
-                moves['egg'] += move['Name']
-            #
-            species = value["Species"]
-            dex[species] = entry
-    print(dex["Bulbasaur"] or "Oh come on")
+                moves['egg'].append(move['Name'])
+            entry["moves"] = moves
+            # How do I want to do evolutions?
+            evolutions = {}
+            stage = 0
+            cur_stage = 0
+            stages = value["EvolutionStages"]
+            for evolution in stages:
+                if stage == cur_stage:
+                    if evolution["Species"] != species:
+                        cur_stage += 1
+                else:
+                    evolutions[evolution["Species"]] = evolution["Criteria"]
+                stage += 1
+            entry["stage"] = len(stages) - len(evolutions)
+            if evolutions:
+                entry["evolutions"] = evolutions
+                entry["stages_left"] = len(evolutions)
+            dex[species_name] = entry
+    print(dex["Ivysaur"] or "Oh come on")
+    with open('data/pokemon2.json', 'wt') as out:
+        json.dump(dex, out, indent=4)
 
 class InFormat(json.JSONDecoder):
     """The format of the file from which I am pulling data from.
